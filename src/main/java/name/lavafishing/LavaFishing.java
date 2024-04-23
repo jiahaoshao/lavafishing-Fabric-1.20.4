@@ -51,9 +51,6 @@ public class LavaFishing implements ModInitializer {
 			Registry.register(Registries.ITEM, new Identifier("lavafishing", "obsidian_fishing_rod"),
 					new ItemObsidianFishingRod(new FabricItemSettings()));
 
-	public static final ItemObsidianFishingRod OBSIDIAN_FISHING_ROD_CAST =
-			Registry.register(Registries.ITEM, new Identifier("lavafishing", "obsidian_fishing_rod_cast"),
-					new ItemObsidianFishingRod(new FabricItemSettings()));
 
 	//添加物品组
 	public static final ItemGroup LAVAFISHING_GROUP =
