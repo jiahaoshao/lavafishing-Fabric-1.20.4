@@ -1,0 +1,48 @@
+{
+	"schemaVersion": 1,
+	"id": "lavafishing",
+	"version": "${version}",
+	"name": "LavaFishing",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/lavafishing/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"name.lavafishing.LavaFishing"
+		],
+		"fabric-datagen": [
+			"name.lavafishing.LavaFishingDataGenerator"
+		]
+	},
+	"mixins": [
+		"lavafishing.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.9",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	},
+	"entrypoints": {
+		"fabric-datagen": [
+			"name.lavafishing.LavaFishingDataGenerator"
+		],
+		"main": [
+			"name.lavafishing.LavaFishing"
+		],
+		"client": [
+			"name.lavafishing.LavaFishingModClient"
+		]
+	}
+}
