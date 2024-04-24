@@ -5,6 +5,7 @@ import name.lavafishing.effect.EffectEndlessFlame;
 import name.lavafishing.effect.EffectLavaWalker;
 import name.lavafishing.item.ItemObsidianFishingRod;
 import name.lavafishing.item.fishs.ItemAgniFish;
+import name.lavafishing.registry.LavafishingItems;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -12,6 +13,8 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -46,26 +49,41 @@ public class LavaFishing implements ModInitializer {
 			Registry.register(Registries.STATUS_EFFECT, new Identifier("lavafishing", "effect_lava_walker"),
 					new EffectLavaWalker());
 
-	//岩浆钓竿
-	public static final ItemObsidianFishingRod OBSIDIAN_FISHING_ROD =
-			Registry.register(Registries.ITEM, new Identifier("lavafishing", "obsidian_fishing_rod"),
-					new ItemObsidianFishingRod(new FabricItemSettings()));
+//	//岩浆钓竿
+//	public static final ItemObsidianFishingRod OBSIDIAN_FISHING_ROD =
+//			Registry.register(Registries.ITEM, new Identifier("lavafishing", "obsidian_fishing_rod"),
+//					new ItemObsidianFishingRod());
 
 
 	//添加物品组
-	public static final ItemGroup LAVAFISHING_GROUP =
-			Registry.register(Registries.ITEM_GROUP, new Identifier("lavafishing", "lavafishing_group"),
-					FabricItemGroup.builder()
-							.icon(()->new ItemStack(OBSIDIAN_FISHING_ROD))
-							.displayName(Text.translatable("itemGroup.lavafishing.lavafishing_group"))
-							.entries((content, entries) -> {
-								entries.add(AGNI_FISH);
-								entries.add(OBSIDIAN_FISHING_ROD);
-							})
-							.build());
+//	public static final ItemGroup LAVAFISHING_GROUP =
+//			Registry.register(Registries.ITEM_GROUP, new Identifier("lavafishing", "lavafishing_group"),
+//					FabricItemGroup.builder()
+//							.icon(()->new ItemStack(OBSIDIAN_FISHING_ROD))
+//							.displayName(Text.translatable("itemGroup.lavafishing.lavafishing_group"))
+//							.entries((content, entries) -> {
+//								entries.add(AGNI_FISH);
+//								entries.add(OBSIDIAN_FISHING_ROD);
+//							})
+//							.build());
 
+
+	public static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, id("item_group"));
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Hello lavafishing world!");
+		Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
+				.icon(() -> new ItemStack(AGNI_FISH))
+				.displayName(Text.translatable("itemGroup.lavafishing.item_group"))
+				.entries((content, entries) -> {
+					entries.add(AGNI_FISH);
+				})
+				.build());
+		LavafishingItems.init();
+	}
+
+	public static Identifier id(String name) {
+		return new Identifier("lavafishing", name);
+
 	}
 }
