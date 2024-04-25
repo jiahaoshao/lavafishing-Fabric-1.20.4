@@ -3,7 +3,8 @@
 	"package": "name.lavafishing.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-      "LavaFishingMixin"
+      "LavaFishingMixin",
+		"FishingBobberValidityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
